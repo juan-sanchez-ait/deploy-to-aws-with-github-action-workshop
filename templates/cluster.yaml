@@ -26,7 +26,7 @@ Resources:
           IpProtocol: -1
           Description: Ingress from the public internet
       SecurityGroupEgress:
-        - CidrIp: 666.666.666.666 #0.0.0.0/0 # Introduce invalid CIDR
+        - CidrIp: 0.0.0.0/0
           IpProtocol: -1
           Description: Egress to the public internet
 
@@ -61,7 +61,7 @@ Resources:
           !Sub "${VPCStackName}-VPCID"
 
   LoadBalancerListener:
-    Type: AWS::ElasticLoadBalancingV8::Listener # AWS::ElasticLoadBalancingV2::Listener # introduce invalid type
+    Type: AWS::ElasticLoadBalancingV2::Listener
     Properties:
       DefaultActions:
         - TargetGroupArn: !Ref LoadBalancerTargetGroup
